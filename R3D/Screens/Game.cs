@@ -12,11 +12,19 @@ namespace R3D.Screens
     class Game : Screen
     {
         private rlFPCamera _camera;
+
         private WModel _cube;
+        private WModel _ironman;
         private WModel _light;
+
         private WTexture _diffuse;
         private WTexture _specular;
+
+        private WTexture _ironmanDiffuse;
+        private WTexture _ironmanSpecular;
+
         private WShader _test;
+
         private Vector3 _lightPos;
 
         private bool inGame = true;
@@ -30,17 +38,26 @@ namespace R3D.Screens
             _camera.MoveSpeed.Y = 10;
 
             _cube = new WModel(WMesh.Cube(1.0f, 1.0f, 1.0f));
+            _ironman = new WModel("Assets/Models/ironman.obj");
             _light = new WModel(WMesh.Cube(0.2f, 0.2f, 0.2f));
 
             _diffuse = new WTexture("Assets/Textures/container2.png");
             _specular = new WTexture("assets/Textures/container2_specular.png");
 
+            _ironmanDiffuse = new WTexture("Assets/Textures/ironman_diffuse.png");
+            _ironmanSpecular = new WTexture("Assets/Textures/ironman_specular.png");
+
             _test = new WShader("Assets/Shaders/test.vs", "Assets/Shaders/test.fs");
+
+            _lightPos = new Vector3(2.0f, 2.0f, 2.0f);
 
             _cube.Diffuse = _diffuse;
             _cube.Specular = _specular;
-
             _cube.Shader = _test;
+
+            _ironman.Diffuse = _ironmanDiffuse;
+            _ironman.Specular = _ironmanSpecular;
+            _ironman.Shader = _test;
 
             _test.Set("light.ambient", new Vector3(0.2f, 0.2f, 0.2f));
             _test.Set("light.diffuse", new Vector3(1.0f, 1.0f, 1.0f));
@@ -48,8 +65,6 @@ namespace R3D.Screens
             _test.Set("shininess", 64.0f);
 
             MaximizeWindow();
-
-            _lightPos = new Vector3(2.0f, 2.0f, 2.0f);
         }
 
         public override void Update(float dt)
@@ -90,19 +105,23 @@ namespace R3D.Screens
             DrawGrid(10, 1);
 
             _cube.Draw();
+            _ironman.Draw(new Vector3(3.0f, 0.0f, 3.0f));
             _light.Draw(_lightPos);
 
             _camera.EndMode3D();
-
         }
 
         public override void Unload()
         {
             _cube.Unload();
+            _ironman.Unload();
             _light.Unload();
 
             _diffuse.Unload();
             _specular.Unload();
+
+            _ironmanDiffuse.Unload();
+            _ironmanSpecular.Unload();
 
             _test.Unload();
         }
