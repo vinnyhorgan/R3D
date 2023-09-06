@@ -186,6 +186,7 @@ namespace R3D.Utility
                 }
             }
 
+            /* COMMENTED OUT BECAUSE IT INTERFERED WITH MOUSE LOCKING
             // Mouse cursor state
             if ((io.ConfigFlags & ImGuiConfigFlags.NoMouseCursorChange) == 0 || Raylib.IsCursorHidden())
             {
@@ -199,6 +200,7 @@ namespace R3D.Utility
                     Raylib.ShowCursor();
                 }
             }
+            */
         }
 
         void UpdateGamepad()

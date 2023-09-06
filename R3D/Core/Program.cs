@@ -18,6 +18,7 @@ namespace R3D.Core
             SetConfigFlags(ConfigFlags.FLAG_WINDOW_RESIZABLE | ConfigFlags.FLAG_MSAA_4X_HINT);
             InitWindow(width, height, "R3D");
             SetWindowMinSize(width / 2, height / 2);
+            SetExitKey(KeyboardKey.KEY_NULL);
             SetTargetFPS(GetMonitorRefreshRate(GetCurrentMonitor()));
 
             InitAudioDevice();

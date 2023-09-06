@@ -19,6 +19,8 @@ namespace R3D.Screens
         private WShader _test;
         private Vector3 _lightPos;
 
+        private bool inGame = true;
+
         public unsafe override void Load()
         {
             _camera = new rlFPCamera();
@@ -52,10 +54,27 @@ namespace R3D.Screens
 
         public override void Update(float dt)
         {
-            _camera.Update();
-
             _test.Set("light.position", _lightPos);
             _test.Set("viewPos", _camera.GetCameraPosition());
+
+            if (inGame)
+            {
+                _camera.Update();
+            }
+
+            if (IsKeyPressed(KeyboardKey.KEY_ESCAPE))
+            {
+                if (inGame)
+                {
+                    inGame = false;
+                    EnableCursor();
+                }
+                else
+                {
+                    inGame = true;
+                    DisableCursor();
+                }
+            }
 
             ImGui.Begin("Controls");
 
