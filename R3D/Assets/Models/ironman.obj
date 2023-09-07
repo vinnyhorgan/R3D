@@ -1,6 +1,5 @@
 # Blender 3.6.2
 # www.blender.org
-mtllib iron_normals.mtl
 o ironman
 v 0.037874 1.139775 -0.125876
 v 0.044930 1.145484 -0.118569
