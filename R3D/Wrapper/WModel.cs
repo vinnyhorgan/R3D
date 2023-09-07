@@ -73,7 +73,11 @@ namespace R3D.Wrapper
             set
             {
                 var shader = value.Shader;
-                SetMaterialShader(ref _model, 0, ref shader);
+
+                for (int i = 0; i < _model.materialCount; i++)
+                {
+                    SetMaterialShader(ref _model, i, ref shader);
+                }
             }
         }
 
@@ -92,7 +96,7 @@ namespace R3D.Wrapper
 
         public void Update()
         {
-            if (_anims != null)
+            if (_anims != null && _anims.Count > 0)
             {
                 _animCounter++;
 
