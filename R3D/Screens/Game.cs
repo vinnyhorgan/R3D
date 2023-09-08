@@ -46,7 +46,7 @@ namespace R3D.Screens
 
             _cube = new WModel(WMesh.Cube(1.0f, 1.0f, 1.0f));
             _ironman = new WModel("Assets/Models/ironman.obj");
-            _robot = new WModel("Assets/Models/ironman.glb");
+            _robot = new WModel("Assets/Models/rick.glb");
             _light = new WModel(WMesh.Cube(0.2f, 0.2f, 0.2f));
             _ground = new WModel(WMesh.Plane(20.0f, 20.0f, 1, 1));
 
@@ -73,8 +73,6 @@ namespace R3D.Screens
             _ground.Diffuse = _groundDiffuse;
             _ground.Shader = _test;
 
-            _robot.Diffuse = _ironmanDiffuse;
-            _robot.Specular = _ironmanSpecular;
             _robot.Shader = _test;
 
             _test.Set("light.ambient", new Vector3(0.2f, 0.2f, 0.2f));
@@ -138,7 +136,7 @@ namespace R3D.Screens
 
             _cube.Draw();
             _ironman.Draw(new Vector3(3.0f, 0.0f, 3.0f));
-            _robot.Draw(new Vector3(-3.0f, 0.0f, -3.0f), new Vector3(1.0f, 0.0f, 0.0f), 90);
+            _robot.Draw(new Vector3(-3.0f, 0.0f, -3.0f), new Vector3(1.0f, 0.0f, 0.0f), 90, 0.02f);
             _light.Draw(_lightPos);
             _ground.Draw();
 

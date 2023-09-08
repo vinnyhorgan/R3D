@@ -51,5 +51,5 @@ void main()
     vec3 specular = light.specular * spec * texture(texture1, fragTexCoord).rgb;
 
     vec3 result = ambient + diffuse + specular;
-    finalColor = vec4(result, 1.0);
+    finalColor = vec4(result, 1.0) * colDiffuse;
 }
